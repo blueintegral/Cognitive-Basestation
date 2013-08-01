@@ -1,0 +1,26 @@
+This block allows for 2-way communication between the CC1101 and the USRP, using TI's 'SimpliciTI' packet protocol
+Switching to the CC1110 will allow more customization on the node
+
+Use SmartRF studio to test, important options:
+
+F_center: 434 MHz
+Modulation: 2-FSK
+Channel no: 0
+Data Rate: 2.4kBaud
+
+Receive with B100
+
+SimpliciTI format:
+
++--------------------------------------------------------------------------------------------------------------+
+| preamble | sync | length | dest. address | src address | port | device info | transaction ID | payload | FCS |
++--------------------------------------------------------------------------------------------------------------+
+
+Sink listens for a preamble of length 30 bits:
+10101010...
+If found, look for 32 bit sync word:
+1101...
+If valid, look at length and store rest of packet in buffer
+Then compute FCS code to check for bit errors
+If valid packet, segment buffer in to fields
+Pass extracted payload to higher level process

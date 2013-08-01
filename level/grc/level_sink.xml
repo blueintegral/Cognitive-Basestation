@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<block>
+  <name>Square</name>
+  <key>level_sink</key>
+  <category>Level</category>
+  <import></import>
+  <make></make>
+
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+</block>
